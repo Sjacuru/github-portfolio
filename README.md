@@ -82,7 +82,7 @@ Each div with class `work__box` represents a project, replace the contents of th
         <a href="#" class="link__text">
         Visit Site <span>&rarr;</span>
         </a> 
-        <a href="https://github.com/nisarhassan12/portfolio" target="_blank">
+        <a href="https://sjacuru.github.io/github-portfolio/" target="_blank">
         <img src="./images/github.svg" class="work__code" alt="GitHub">
         </a>
     </div>
@@ -194,35 +194,24 @@ For changing the screenshot:
     <div class="row">
         <!-- Update the links to point to your accounts -->
         <ul class="footer__social-links">
+            
             <li class="footer__social-link-item">
-                <a href="https://twitter.com/nisarhassan12/">
-                    <img src="./images/twitter.svg" class="footer__social-image" alt="Twitter">
-                </a>
-            </li>
-            <li class="footer__social-link-item">
-                <a href="https://github.com/nisarhassan12/">
+                <a href="https://sjacuru.github.io/github-portfolio/">
                     <img src="./images/github.svg" class="footer__social-image" alt="Github">
                 </a>
             </li>
             <li class="footer__social-link-item">
-                <a href="https://codepen.io/nisar_hassan">
-                    <img src="./images/codepen.svg" class="footer__social-image" alt="Codepen">
-                </a>
-            </li>
-            <li class="footer__social-link-item">
-                <a href=https://www.linkedin.com/in/nisar-hassan-naqvi-413466199/">
+                <a href="www.linkedin.com/in/salim-jacuru-87859a76/">
                     <img src="./images/linkedin.svg" class="footer__social-image" alt="Linkedin">
                 </a>
             </li>
         </ul>
 
         <!-- If you give me some credit by keeping the below paragraph, will be huge for me 😊 Thanks. -->
-        <p>
-          &copy; 2020 - Template designed & developed by <a href="https://nisar.dev">Nisar</a>.
-        </p>
+        
         <div class="footer__github-buttons">
           <iframe
-            src="https://ghbtns.com/github-btn.html?user=nisarhassan12&repo=portfolio-template&type=watch&count=true" 
+            src="www.linkedin.com/in/salim-jacuru-87859a76" 
             frameborder="0" scrolling="0" width="170" height="20" title="Watch Portfolio Template on GitHub">
           </iframe>
         </div>
