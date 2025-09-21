@@ -36,7 +36,7 @@ You'll need [Git](https://git-scm.com) to be installed on your computer.
 $ git clone https://github.com/nisarhassan12/portfolio-template
 ```
 
-If you don't have Git installed or you don't like using the terminal then you can download the [zip](https://github.com/nisarhassan12/portfolio-template/archive/master.zip) and extract that and open the extracted folder in the code editor of your your choice.
+If you don't have Git installed or you don't like using the terminal then you can download the [zip](###) and extract that and open the extracted folder in the code editor of your your choice.
 
 ## Editing the Template 🔨
 
@@ -51,10 +51,10 @@ In all of the places where you're supposed to fill your information you'll find 
     <div class="header__text">
         <h1 class="heading-primary">
         <!-- Replace the following name with your name -->
-        <span>Syed Ali Hussnain</span>
+        <span>Salim Jacuru</span>
         </h1>
         <!-- Put a small paragraph about yourself -->
-        <p>A Web Developer based in Lahore, Pakistan.</p>
+        <p>A Master Software Engineer in New Zealand.</p>
         <a href="#contact" class="btn btn--pink">Get in touch</a>
     </div>
 </div>
@@ -72,10 +72,7 @@ Each div with class `work__box` represents a project, replace the contents of th
         A free Open Source Portfolio for anyone to use for free.
     </p>
     <ul class="work__list">
-        <li>HTML</li>
-        <li>SCSS</li>
-        <li>JavaScript</li>
-        <li>Parcel</li>
+        <li>Python</li>
     </ul>
 
     <div class="work__links">
@@ -137,10 +134,7 @@ For changing the screenshot:
             <div class="about__text">
                 <!-- Replace the below paragraph with info about yourself -->
                 <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos id
-                nostrum illo harum blanditiis, tenetur eum suscipit cupiditate
-                in vel, ex quam quidem quos mollitia labore aut sunt eius
-                ratione molestiae fuga veniam facere similique voluptate.
+                Aprendendo tecnologia baseada em IA. 
                 </p>
                 <!-- Provide a link to your resume -->
                 <a href="#" class="btn">My Resume</a>
@@ -150,7 +144,7 @@ For changing the screenshot:
                 <!-- Add a nice photo of yourself -->
                 <img
                 class="about__photo"
-                src="./images/syed-ali-hussnain.jpg"
+                src="./images/salim.jpg"
                 alt=""
                 />
             </div>
@@ -170,15 +164,14 @@ For changing the screenshot:
         <h2>Get in Touch</h2>
         <div class="contact__info">
           <p>
-            Are you looking for a fast-performing and user-friendly website to
-            represent your product or business? or looking for any kind of
-            consultation? or want to ask questions? or have some advice for me
-            or just want to say "Hi 👋" in any case feel free to Let me know. I
-            will do my best to respond back. 😊 The quickest way to reach out to
-            me is via an email.
+            Are you looking for someone who is really engaged in making things work? Someone 
+            who tries to get it right from the start? Someone who never gives up? 
+            
+            You've found them!
+
           </p>
           <!-- Replace the email with yours -->
-          <a href="mailto:you@example.com" class="btn">you@example.com</a>
+          <a href="mailto:sjacuru@gmail.com" class="btn">sjacuru@gmail.com</a>
         </div>
       </div>
 </section>
