@@ -21,7 +21,7 @@ Reporting & Analytics: Generating key reports on costs and profitability.
 
 👥 Team & Collaboration
 This project is a collaborative effort between students and is being overseen by our professor, Mohammad.
-Role            Name        GitHub                      Username          
+Role            Name                  
 Project Lead    Emam        
-Collaborator    Salim       https://github.com/Sjacuru  Sjacuru
+Collaborator    Salim       
 Professor       Mohammad    
