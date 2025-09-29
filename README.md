@@ -22,6 +22,6 @@ Reporting & Analytics: Generating key reports on costs and profitability.
 👥 Team & Collaboration
 This project is a collaborative effort between students and is being overseen by our professor, Mohammad.
 Role            Name                  
-Project Lead    Emam        
+Collaborator    Emam        
 Collaborator    Salim       
 Professor       Mohammad    
