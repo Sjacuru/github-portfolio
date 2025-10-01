@@ -5,7 +5,11 @@ Bakery Project Emam and Salim
 A full-stack application designed to streamline and automate the entire operational workflow of a modern bakery, from raw material inventory to final sales reporting.
 
 🌟 Project Overview
-The Bakery Management System is a mission-critical application intended to replace manual, error-prone processes within a bakery's daily operations. By creating a unified platform, we aim to deliver a solution that ensures data integrity, increases operational efficiency, and provides real-time visibility across the business.
+The Bakery Management System is a mission-critical application intended to replace manual, error-prone processes within a bakery's daily operations. By creating a unified platform, we aim to deliver a solution that ensures data integrity, increases operational efficiency, and provides real-time visibility across the business. 
+
+Development Approach (Minimum Viable Product - MVP)
+
+Our initial focus will be on developing the Minimum Viable Product (MVP), prioritizing the most essential features required for core functionality. The system is designed to be fully scalable and will be incremented with new features over time based on business needs and user feedback.
 
 This system covers five core functional areas:
 
@@ -15,7 +19,7 @@ Daily Production Tracking: Managing recipes, scheduling batches, and recording d
 
 Sales Monitoring: Processing transactions and tracking sales data.
 
-Dashboard: Display live item tracking and provide a basic analysis report.
+Dashboard: Display live item tracking and provide a basic analysis report. Docker will be used for version control and system demonstrations.
 
 Reporting & Analytics: Generating key reports on costs and profitability. 
 
