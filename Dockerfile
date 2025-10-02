@@ -1,7 +1,15 @@
+
 # Python image as the base
 FROM python:3.11-slim
 
 # Set environment variables for non-interactive commands
+RUN apt-get update && apt-get install -y \
+    gcc \
+    default-libmysqlclient-dev \
+    pkg-config \
+    libffi-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 

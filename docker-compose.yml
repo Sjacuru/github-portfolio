@@ -1,32 +1,32 @@
-version: '3.8'
-
 services:
-  # --- 1. The Django Application Service ---
   web:
-    # Build the image using the Dockerfile located in the current directory
     build: .
-    # Name the container
     container_name: bms_web
-    # Map the container port (8000) to a port on your host machine (8000)
+    command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
-    # Mount the local project folder into the container for easy development
     volumes:
       - .:/app
-    # Ensure the database file is available to the app container from the volume
-      - bms_data:/app/data
-
-  # --- 2. The Database Data Volume Service ---
-  # We use this to ensure the SQLite database file persists.
-  db_data:
-    image: busybox:latest
-    container_name: bms_db_volume
-    # Mount a volume to a specific location (where your app expects the DB file)
+    depends_on:
+      - db
+    environment:
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - DB_NAME=${DB_NAME}
+      - DB_NAME=bakery_db
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=db
+      - DB_PORT=3306
+      - USE_DOCKER=true
+  db:
+    image: mysql:8.0
+    container_name: bms_db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
     volumes:
-      - bms_data:/app/data
-
-# --- Define the Persistent Volume ---
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
 volumes:
-  # Named volume to keep your SQLite database file safe outside the containers.
-  bms_data:
-    driver: local
+  mysql_data:
