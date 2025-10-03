@@ -27,10 +27,10 @@ services:
       - mysql_data:/var/lib/mysql
     ports:
       - "3306:3306"
-  frontend:
-    build: ./frontend
-    ports:
-      - "3000:3000"
-    command: npm start
+  # frontend:
+  #   build: ./frontend
+  #   ports:
+  #     - "3000:3000"
+  #   command: npm start
 volumes:
   mysql_data:
