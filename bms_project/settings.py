@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',  # For APIs
+    'rest_framework_simplejwt',  # For SimpleJWT
     'users',  # Your custom app
 ]
 
@@ -77,16 +78,18 @@ WSGI_APPLICATION = 'bms_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 # Database (will update to MySQL below)
-if os.getenv('USE_DOCKER', 'false').lower() == 'true':
+if os.getenv('USE_DOCKER', 'true').lower() == 'true':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': os.getenv('DB_NAME'),
             'USER': os.getenv('DB_USER'),
-            'PASSWORD': os.getenv('DB_PASSWORD'),
-            'HOST': os.getenv('DB_HOST', 'db'),  # 'db' is the service name in docker-compose
-            'PORT': os.getenv('DB_PORT'),
+            'PASSWORD': os.getenv('DB_PASSWORD', 'yoobee2025!'),
+            'HOST': os.getenv('DB_HOST', '127.0.0.1' if not os.getenv('DOCKER_INTERNAL', 'false').lower() == 'true' else 'db'),  # 'db' is the service name in docker-compose
+            'PORT': os.getenv('DB_PORT', '3306'),
             'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
         }
     }
@@ -98,6 +101,11 @@ else:
         }
     }
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',  # For JWT auth
+    ),
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

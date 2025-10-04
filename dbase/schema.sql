@@ -28,3 +28,9 @@ CREATE TABLE Sales (
     status ENUM('pending', 'paid', 'shipped') NOT NULL,
     sale_date DATE NOT NULL
 );
+CREATE TABLE user_profiles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    role ENUM('manager', 'staff') NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES auth_user(id) ON DELETE CASCADE
+);
