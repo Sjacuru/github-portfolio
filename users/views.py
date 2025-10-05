@@ -1,36 +1,30 @@
-from django.shortcuts import render
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import serializers
-from .models import User
-import bcrypt
+from django.contrib.auth.models import User
+from users.models import Profile
+
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-        # Add custom claims (role)
-        token['role'] = user.role
+        try:
+            profile = Profile.objects.get(user=user)
+            token['role'] = profile.role
+        except Profile.DoesNotExist:
+            token['role'] = None
         return token
 
+
     def validate(self, attrs):
-        # Get username and password from request
-        username = attrs.get('username')
-        password = attrs.get('password')
-
-        # Find user
-        try:
-            user = User.objects.get(username=username)
-        except User.DoesNotExist:
-            raise serializers.ValidationError('Invalid username or password')
-
-        # Verify password (assuming bcrypt hashing)
-        if not bcrypt.checkpw(password.encode('utf-8'), user.password.encode('utf-8')):
-            raise serializers.ValidationError('Invalid username or password')
-
-        # Prepare token data
         data = super().validate(attrs)
-        data['role'] = user.role  # Include role in response
+        user = self.user
+        try:
+            profile = Profile.objects.get(user=user)
+            data['role'] = profile.role
+        except Profile.DoesNotExist:
+            data['role'] = None
         return data
 
 class CustomTokenObtainPairView(TokenObtainPairView):

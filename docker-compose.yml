@@ -1,12 +1,10 @@
+version: '3.8'
 services:
   web:
     build: .
-    container_name: bms_web
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn --bind 0.0.0.0:8000 bms_project.wsgi:application
     ports:
       - "8000:8000"
-    volumes:
-      - .:/app
     depends_on:
       - db
     environment:
@@ -17,20 +15,39 @@ services:
       - DB_HOST=db
       - DB_PORT=3306
       - USE_DOCKER=true
+      - DOCKER_INTERNAL=true
+    volumes:
+      - .:/app
+    networks:
+      - bms_network
   db:
     image: mysql:8.0
-    container_name: bms_db
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
-    volumes:
-      - mysql_data:/var/lib/mysql
     ports:
       - "3306:3306"
-  # frontend:
-  #   build: ./frontend
-  #   ports:
-  #     - "3000:3000"
-  #   command: npm start
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./dbase/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    networks:
+      - bms_network
+    # container_name: bms_db
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+    - ./frontend:/app
+    - /app/node_modules
+    depends_on:
+    - web
+    networks:
+    - bms_network
+    # command: npm start
+networks:
+  bms_network:
+    driver: bridge
+
 volumes:
-  mysql_data:
+  db_data:
