@@ -28,7 +28,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Security
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-fallback-key')
 DEBUG = True
-ALLOWED_HOSTS = ['*']  # For Docker dev; restrict in production
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1,web").split(",")
+CORS_ALLOWED_ORIGINS = [ "http://localhost:3000",]
 
 
 # Application definition
@@ -42,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',  # For APIs
     'rest_framework_simplejwt',  # For SimpleJWT
+    "corsheaders",  # For handling CORS
+    'inventory',  # Your custom app
     'users',  # Your custom app
 ]
 
@@ -52,6 +55,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -88,7 +92,8 @@ if os.getenv('USE_DOCKER', 'true').lower() == 'true':
             'NAME': os.getenv('DB_NAME'),
             'USER': os.getenv('DB_USER'),
             'PASSWORD': os.getenv('DB_PASSWORD', 'yoobee2025!'),
-            'HOST': os.getenv('DB_HOST', '127.0.0.1' if not os.getenv('DOCKER_INTERNAL', 'false').lower() == 'true' else 'db'),  # 'db' is the service name in docker-compose
+            # 'HOST': os.getenv('DB_HOST', '127.0.0.1' if not os.getenv('DOCKER_INTERNAL', 'false').lower() == 'true' else 'db'),  # 'db' is the service name in docker-compose
+            'HOST': os.getenv('DB_HOST', 'db'),
             'PORT': os.getenv('DB_PORT', '3306'),
             'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
         }
@@ -104,6 +109,9 @@ else:
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',  # For JWT auth
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
     ),
 }
 

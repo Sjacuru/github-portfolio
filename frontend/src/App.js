@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+// import { Route, Routes } from 'react-router-dom';
+// import IngredientList from './components/IngredientList';
+
+// function App() {
+//   return (
+//     <Routes>
+//       <Route path="/ingredients" element={<IngredientList />} />
+//       {/* Other routes */}
+//     </Routes>
+//   );
+// }
+
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import IngredientList from './components/IngredientList';
+import Login from './components/Login';
 
 function App() {
+  const isAuthenticated = () => !!localStorage.getItem('access_token');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          path="/ingredients"
+          element={isAuthenticated() ? <IngredientList /> : <Navigate to="/login" />}
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Navigate to="/login" />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,0 +1,4 @@
+36c36b9fefe3 assessment_2_pse_bakery-frontend assessment_2_pse_bakery-frontend-1 Up 28 minutes
+5f1720ce6825 assessment_2_pse_bakery-web assessment_2_pse_bakery-web-1 Up 28 minutes
+58f384bacc6d mysql:8.0 assessment_2_pse_bakery-db-1 Up 28 minutes
+17a09d4386be car_rental:latest car_rental Exited (0) 3 days ago
