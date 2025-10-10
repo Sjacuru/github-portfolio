@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from datetime import timedelta
 
 # Load .env file
 load_dotenv()
@@ -47,6 +48,16 @@ INSTALLED_APPS = [
     'inventory',  # Your custom app
     'users',  # Your custom app
 ]
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # Default
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'USER_ID_CLAIM': 'user_id',
+    'USER_ID_FIELD': 'id',
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    # Custom token claims
+    'TOKEN_OBTAIN_SERIALIZER': 'your_app.serializers.CustomTokenObtainPairSerializer',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

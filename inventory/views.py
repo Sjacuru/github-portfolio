@@ -1,32 +1,40 @@
-# from rest_framework import generics
-# from rest_framework.permissions import IsAuthenticated
-# from .models import Ingredient
-# from .serializers import IngredientSerializer
-
-# class IsStaffOrManager(IsAuthenticated):
-#     def has_permission(self, request, view):
-#         try:
-#             return super().has_permission(request, view) and hasattr(request.user, 'profile') and request.user.profile.role in ['staff', 'manager']
-#         except AttributeError:
-#             return False
-
-# class IngredientListView(generics.ListAPIView):
-#     queryset = Ingredient.objects.all()
-#     serializer_class = IngredientSerializer
-#     permission_classes = [IsStaffOrManager]
-
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from rest_framework.permissions import IsAuthenticated
 from .models import Ingredient
 from .serializers import IngredientSerializer
 
-class IsStaffOrManager(IsAuthenticated):
-    def has_permission(self, request, view):
-        return (super().has_permission(request, view) and 
-                hasattr(request.user, 'profile') and 
-                request.user.profile.role in ['staff', 'manager'])
+# class IsStaffOrManager(IsAuthenticated):
+#     def has_permission(self, request, view):
+#         return (super().has_permission(request, view) and 
+#                 hasattr(request.user, 'profile') and 
+#                 request.user.profile.role in ['staff', 'manager'])
+
+# class IngredientViewSet(viewsets.ModelViewSet):
+#     queryset = Ingredient.objects.all()
+#     serializer_class = IngredientSerializer
+#     permission_classes = [IsStaffOrManager]
+
+
+# from django.contrib.auth.decorators import user_passes_test
 
 class IngredientViewSet(viewsets.ModelViewSet):
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
-    permission_classes = [IsStaffOrManager]
+    permission_classes = [IsAuthenticated]
+
+    def get_permissions(self):
+        if self.action in ['create', 'update', 'partial_update', 'destroy']:
+            return [IsAuthenticated(), IsStaffOrManager()]
+        return [IsAuthenticated()]
+
+class IsStaffOrManager(permissions.BasePermission):
+    def has_permission(self, request, view):
+        if not request.user.is_authenticated:
+            return False
+        # Allow users with is_staff = True or role = 'manager'/'staff'
+        if request.user.is_staff:
+            return True
+        try:
+            return request.user.profile.role in ['manager', 'staff']
+        except AttributeError:  # Profile or role doesn't exist
+            return False
