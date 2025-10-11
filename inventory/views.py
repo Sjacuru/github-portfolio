@@ -3,20 +3,6 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Ingredient
 from .serializers import IngredientSerializer
 
-# class IsStaffOrManager(IsAuthenticated):
-#     def has_permission(self, request, view):
-#         return (super().has_permission(request, view) and 
-#                 hasattr(request.user, 'profile') and 
-#                 request.user.profile.role in ['staff', 'manager'])
-
-# class IngredientViewSet(viewsets.ModelViewSet):
-#     queryset = Ingredient.objects.all()
-#     serializer_class = IngredientSerializer
-#     permission_classes = [IsStaffOrManager]
-
-
-# from django.contrib.auth.decorators import user_passes_test
-
 class IngredientViewSet(viewsets.ModelViewSet):
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
