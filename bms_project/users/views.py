@@ -1,13 +1,9 @@
-# from rest_framework import serializers
-# from .models import Ingredient
-
-# class IngredientSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Ingredient
-#         fields = ['id', 'name', 'stock_quantity', 'unit', 'reorder_point']
-
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework import serializers
+from django.contrib.auth.models import User
 from .models import Profile
+
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
@@ -20,6 +16,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
             token['role'] = None
         return token
 
+
     def validate(self, attrs):
         data = super().validate(attrs)
         user = self.user
@@ -29,3 +26,6 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         except Profile.DoesNotExist:
             data['role'] = None
         return data
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer

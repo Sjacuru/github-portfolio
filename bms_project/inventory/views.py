@@ -1,12 +1,21 @@
 from rest_framework import viewsets, permissions
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from django.db.models import F
 from rest_framework.permissions import IsAuthenticated
-from .models import Ingredient
-from .serializers import IngredientSerializer
+from bms_project.inventory.models import Ingredient 
+from bms_project.inventory.serializers import IngredientSerializer
 
 class IngredientViewSet(viewsets.ModelViewSet):
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
     permission_classes = [IsAuthenticated]
+
+    @action(detail=False, methods=['get'], url_path='low-stock')
+    def low_stock(self, request):
+        low_stock = Ingredient.objects.filter(stock_quantity__lt=F('reorder_point'))
+        serializer = self.get_serializer(low_stock, many=True)
+        return Response(serializer.data)
 
     def get_permissions(self):
         if self.action in ['create', 'update', 'partial_update', 'destroy']:
