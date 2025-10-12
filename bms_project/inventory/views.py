@@ -5,6 +5,8 @@ from django.db.models import F
 from rest_framework.permissions import IsAuthenticated
 from bms_project.inventory.models import Ingredient 
 from bms_project.inventory.serializers import IngredientSerializer
+from bms_project.inventory.models import ProductionBatch
+from bms_project.inventory.serializers import ProductionBatchSerializer
 
 class IngredientViewSet(viewsets.ModelViewSet):
     queryset = Ingredient.objects.all()
@@ -33,3 +35,8 @@ class IsStaffOrManager(permissions.BasePermission):
             return request.user.profile.role in ['manager', 'staff']
         except AttributeError:  # Profile or role doesn't exist
             return False
+        
+class ProductionBatchViewSet(viewsets.ModelViewSet):
+    queryset = ProductionBatch.objects.all()
+    serializer_class = ProductionBatchSerializer
+    permission_classes = [IsAuthenticated]

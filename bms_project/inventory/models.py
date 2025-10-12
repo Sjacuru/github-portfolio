@@ -23,6 +23,12 @@ class Ingredient(models.Model):
         blank=True,
         related_name='updated_ingredients'
     ) 
-
+    class ProductionBatch(models.Model):
+        product_name = models.CharField(max_length=100)
+        quantity_produced = models.DecimalField(max_digits=10, decimal_places=2)
+        production_date = models.DateTimeField(auto_now_add=True)
+        created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='created_batches')
+        updated_at = models.DateTimeField(auto_now=True)
+        last_updated_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='updated_batches')
     def __str__(self):
         return f"{self.name} ({self.stock_quantity} {self.unit})"
