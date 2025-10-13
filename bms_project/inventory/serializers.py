@@ -10,8 +10,8 @@ class IngredientSerializer(serializers.ModelSerializer):
 class ProductionBatchSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductionBatch
-        fields = ['id', 'product_name', 'quantity_produced', 'production_date', 'created_by', 'updated_at', 'last_updated_by']
-        read_only_fields = ['production_date', 'created_by', 'updated_at', 'last_updated_by']
+        fields = ['id', 'product_name', 'quantity_produced', 'production_date', 'created_by', 'updated_at', 'last_updated_by', 'status']
+        read_only_fields = ['production_date', 'created_by', 'updated_at', 'last_updated_by', 'status']
 
     def create(self, validated_data):
         validated_data['created_by'] = self.context['request'].user

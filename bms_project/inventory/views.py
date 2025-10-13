@@ -1,10 +1,10 @@
-from rest_framework import viewsets, permissions
+from rest_framework import filters, viewsets, permissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.db.models import F
-from rest_framework.permissions import IsAuthenticated #
-from bms_project.inventory.models import Ingredient, ProductionBatch
-from bms_project.inventory.serializers import IngredientSerializer, ProductionBatchSerializer
+from rest_framework.permissions import IsAuthenticated 
+from .models import Ingredient, ProductionBatch
+from .serializers import IngredientSerializer, ProductionBatchSerializer
 
 class IngredientViewSet(viewsets.ModelViewSet):
     queryset = Ingredient.objects.all()
@@ -35,6 +35,9 @@ class IsStaffOrManager(permissions.BasePermission):
             return False
         
 class ProductionBatchViewSet(viewsets.ModelViewSet):
-    queryset = ProductionBatch.objects.all()
+    queryset = ProductionBatch.objects.all().order_by('-production_date')
     serializer_class = ProductionBatchSerializer
     permission_classes = [IsAuthenticated]
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    search_fields = ['product_name']
+    ordering_fields = ['production_date', 'quantity_produced']
