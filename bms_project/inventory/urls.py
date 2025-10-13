@@ -4,9 +4,9 @@ from bms_project.inventory.views import IngredientViewSet, ProductionBatchViewSe
 
 router = DefaultRouter()
 router.register(r'ingredients', IngredientViewSet, basename='ingredient')
-router.register(r'production-batches', ProductionBatchViewSet)
+router.register(r'production-batches', ProductionBatchViewSet, basename = 'productionbatch')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('ingredients/low-stock/', IngredientViewSet.as_action('low_stock'), name='low-stock'),
+    # path('ingredients/low-stock/', IngredientViewSet.as_action('low_stock'), name='low-stock'),
 ]

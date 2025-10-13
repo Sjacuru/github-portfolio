@@ -23,6 +23,8 @@ Dashboard: Display live item tracking and provide a basic analysis report. Docke
 
 Reporting & Analytics: Generating key reports on costs and profitability. 
 
+Django models are the source of truth; to apply migrations run "docker compose exec web python manage.py migrate".
+
 👥 Team & Collaboration
 This project is a collaborative effort between students and is being overseen by our professor, Mohammad.
 Role            Name                  
