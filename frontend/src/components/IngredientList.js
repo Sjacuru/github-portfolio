@@ -1,14 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+// IngredientList component to display and manage ingredients
 const IngredientList = () => {
   const [ingredients, setIngredients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({ name: '', stock_quantity: '', unit: '', reorder_point: '' });
   const [editingId, setEditingId] = useState(null);
-
+// Fetch ingredients from backend
 const fetchIngredients = async () => {
   try {
     const token = localStorage.getItem('access_token');
@@ -19,20 +19,19 @@ const fetchIngredients = async () => {
     setIngredients(response.data);
     setLoading(false);
   } catch (err) {
-    // console.error('Error:', err.response ? err.response.data : err.message); // Debug error
     setError(err.message || 'Failed to load ingredients. Ensure you are logged in as Staff.');
     setLoading(false);
   }
 };
-
+  // Fetch ingredients on component mount
   useEffect(() => {
     fetchIngredients();
   }, []);
-
+  // Handle form input changes
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  // Handle form submission for adding/editing ingredients
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -53,7 +52,7 @@ const fetchIngredients = async () => {
       setError(err.message || 'Failed to save ingredient.');
     }
   };
-
+  // Handle edit button click
   const handleEdit = (ingredient) => {
     setFormData({
       name: ingredient.name,
@@ -63,7 +62,7 @@ const fetchIngredients = async () => {
     });
     setEditingId(ingredient.id);
   };
-
+  // Handle delete button click
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem('access_token');

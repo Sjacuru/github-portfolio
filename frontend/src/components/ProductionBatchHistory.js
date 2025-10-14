@@ -8,7 +8,7 @@ const ProductionBatchHistory = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState('');
-
+  // Fetch production batches on component mount and when search/status changes
   useEffect(() => {
     const fetchBatches = async () => {
       try {
@@ -42,10 +42,10 @@ const ProductionBatchHistory = () => {
     { key: 'production_date', label: 'Production Date' },
     { key: 'status', label: 'Status' },
   ];
-
+  // Render production batch history with search and filter
   return (
     <div>
-      <h2>Production Batch History (BMS-15)</h2>
+      <h2>Production Batch History</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <div>
         <label>Search Product Name:</label>

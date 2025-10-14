@@ -1,7 +1,7 @@
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .models import Profile
-
+# Customizing JWT to include user role
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
@@ -12,7 +12,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         except Profile.DoesNotExist:
             token['role'] = None
         return token
-
+# Including role in the response data
     def validate(self, attrs):
         data = super().validate(attrs)
         user = self.user

@@ -6,7 +6,7 @@ const ProductionBatchForm = () => {
   const [formData, setFormData] = useState({ product_name: '', quantity_produced: '' });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -19,7 +19,7 @@ const ProductionBatchForm = () => {
       setError('Failed to create batch: ' + (err.response?.data?.detail || 'Server error'));
     }
   };
-
+  // Render production batch creation form
   return (
     <div>
       <h2>Create Production Batch</h2>

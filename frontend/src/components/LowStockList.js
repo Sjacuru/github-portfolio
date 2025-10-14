@@ -5,7 +5,7 @@ const LowStockList = () => {
   const [ingredients, setIngredients] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  // Fetch low-stock ingredients on component mount
   useEffect(() => {
     const fetchLowStock = async () => {
       try {
@@ -18,21 +18,19 @@ const LowStockList = () => {
         const response = await axios.get('http://localhost:8000/api/ingredients/low-stock/', {
           headers: { Authorization: `Bearer ${token}` },
         });
-        console.log('API Response:', response.data); // Debug
         setIngredients(response.data);
         setLoading(false);
       } catch (err) {
-        console.error('Fetch Error:', err.response || err.message); // Debug
         setError('Failed to fetch low-stock ingredients. Check your connection or login.');
         setLoading(false);
       }
     };
     fetchLowStock();
   }, []);
-
+  // Render low-stock ingredients list
   return (
     <div>
-      <h2>Low-Stock Ingredients (BMS-13)</h2>
+      <h2>Low-Stock Ingredients</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {loading ? (
         <p>Loading...</p>

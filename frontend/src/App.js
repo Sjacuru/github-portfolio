@@ -11,7 +11,7 @@ import Login from './components/Login';
 
 function App() {
   const isAuthenticated = () => !!localStorage.getItem('access_token');
-
+  // Define application routes
   return (
     <Router>
       <div>

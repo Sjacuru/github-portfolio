@@ -6,7 +6,7 @@ const ProductionBatchList = () => {
   const [batches, setBatches] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  // Fetch production batches on component mount
   useEffect(() => {
     const fetchBatches = async () => {
       try {
@@ -28,17 +28,17 @@ const ProductionBatchList = () => {
     };
     fetchBatches();
   }, []);
-
+  // Define table columns
   const columns = [
     { key: 'product_name', label: 'Product Name' },
     { key: 'quantity_produced', label: 'Quantity Produced' },
     { key: 'production_date', label: 'Production Date' },
     { key: 'status', label: 'Status' },
   ];
-
+  // Render production batches list
   return (
     <div>
-      <h2>Production Batches (BMS-14)</h2>
+      <h2>Production Batches</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {loading ? (
         <p>Loading...</p>

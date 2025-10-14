@@ -1,5 +1,0 @@
-NETWORK ID     NAME                                  DRIVER    SCOPE
-c77229aadecc   assessment_2_pse_bakery_bms_network   bridge    local
-eaa13d569572   bridge                                bridge    local
-0dc6452060f3   host                                  host      local
-2be2e5b0b8a2   none                                  null      local

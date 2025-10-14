@@ -6,7 +6,7 @@ const LowStockReport = () => {
   const [ingredients, setIngredients] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  // Fetch low-stock ingredients on component mount
   useEffect(() => {
     const fetchLowStock = async () => {
       try {
@@ -28,16 +28,16 @@ const LowStockReport = () => {
     };
     fetchLowStock();
   }, []);
-
+  // Define table columns
   const columns = [
     { key: 'name', label: 'Ingredient Name' },
     { key: 'stock_quantity', label: 'Stock Quantity' },
     { key: 'reorder_point', label: 'Reorder Point' },
   ];
-
+  // Render low-stock report
   return (
     <div style={{ padding: '20px', backgroundColor: '#f4f4f9', borderRadius: '8px' }}>
-      <h2 style={{ color: '#333', marginBottom: '20px' }}>Manager Low-Stock Report (BMS-20)</h2>
+      <h2 style={{ color: '#333', marginBottom: '20px' }}>Manager Low-Stock Report</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {loading ? (
         <p>Loading...</p>
