@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from bms_project.inventory.models import Ingredient, ProductionBatch
+from .models import Ingredient, ProductionBatch
 
 class IngredientSerializer(serializers.ModelSerializer):
     class Meta:

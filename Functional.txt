@@ -15,12 +15,8 @@ These describe what the system should do — the features and operations.
 1. User Management
 
 Create, update, delete users.
- 
-Assign multiple roles to a user: SuperUser, ProductionUser, StockInventoryUser.
- 
-Role-based access control (RBAC) for each module.
- 
-SuperUser has full access across all modules.
+
+Root has full access across all modules.
  
 2. Product & Recipe Management
 
@@ -32,13 +28,9 @@ Manage ingredients and their quantities.
  
 Define and update recipes (productRecipe).
  
-Track production batches with timestamps and quantities.
- 
 3. Inventory Management
 
 Track ingredient stock levels.
- 
-Manage non-ingredient items: machines, packaging, stationery, tables, etc.
  
 Alert for low stock or expired items.
  
@@ -65,14 +57,10 @@ Non-Functional Requirements
 These define how the system should perform.
  
 1. Performance
-
-API response time < 500ms for standard queries.
  
 Efficient DB indexing for inventory and product lookups.
  
 2. Scalability
-
-Microservice architecture allows independent scaling of modules.
  
 Docker containers for horizontal scaling.
  
@@ -86,23 +74,13 @@ Secure API endpoints with HTTPS and JWT.
  
 4. Maintainability
 
-Modular codebase with service and business logic layers.
- 
-Clear comments and docstrings for Python code.
- 
-Separation of concerns using layered architecture (like JPA in Java).
- 
+Clear comments for Python code.
+  
 5. Testability
 
 Unit tests for all services using unittest.
- 
-Mocking for external dependencies.
- 
-CI/CD pipeline integration for automated testing.
- 
+  
 6. Availability
-
-System uptime target: 99.9%.
  
 Dockerized services for quick recovery and deployment.
  
