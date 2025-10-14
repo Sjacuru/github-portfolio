@@ -18,3 +18,8 @@ class ProductionBatchSerializer(serializers.ModelSerializer):
         validated_data['last_updated_by'] = self.context['request'].user
         return super().create(validated_data)
     
+class LowStockIngredientSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ingredient
+        fields = ['name', 'stock_quantity', 'reorder_point']
+    

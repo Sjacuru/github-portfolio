@@ -4,7 +4,7 @@ from .views import IngredientViewSet, ProductionBatchViewSet
 
 router = DefaultRouter()
 router.register(r'ingredients', IngredientViewSet, basename='ingredient')
-router.register(r'production-batches', ProductionBatchViewSet, basename = 'productionbatch')
+router.register(r'production-batches', ProductionBatchViewSet, basename = 'production-batch')
 
 urlpatterns = [
     path('', include(router.urls)),

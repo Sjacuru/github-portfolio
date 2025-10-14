@@ -37,9 +37,7 @@ class ProductionBatch(models.Model):
         ('pending', 'Pending'), 
         ('completed', 'Completed')
         ], default='completed') # After include this feature run migrations and update serializer and viewset accordingly, also curl commands
-
-
-
+    
     def __str__(self):
         return f"Batch of {self.product_name} - {self.quantity_produced} units on {self.production_date.strftime('%Y-%m-%d')}"
     
