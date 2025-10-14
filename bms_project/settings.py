@@ -18,7 +18,7 @@ from datetime import timedelta
 # Load .env file
 load_dotenv()
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Build paths inside the project: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -26,11 +26,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-fallback-key')
 DEBUG = True
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1,web").split(",")
-CORS_ALLOWED_ORIGINS = [ "http://localhost:3000",]
+CORS_ALLOWED_ORIGINS = [ "http://localhost:3000",] # Frontend origins
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,17 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',  # For APIs
+    'rest_framework',  # Django REST framework
     'rest_framework_simplejwt',  # For SimpleJWT
     "corsheaders",  # For handling CORS
-    'bms_project.inventory',  # Your custom app
-    'bms_project.users',  # Your custom app
+    'bms_project.inventory', # Inventory management
+    'bms_project.users',  # User management 
 ]
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    'USER_ID_CLAIM': 'user_id',
+    'USER_ID_CLAIM': 'user_id', 
     'USER_ID_FIELD': 'id',
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
     # Custom token claims
@@ -88,7 +87,6 @@ WSGI_APPLICATION = 'bms_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -162,8 +160,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/' 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

@@ -19,11 +19,14 @@ Daily Production Tracking: Managing recipes, scheduling batches, and recording d
 
 Sales Monitoring: Processing transactions and tracking sales data.
 
-Dashboard: Display live item tracking and provide a basic analysis report. Docker will be used for version control and system demonstrations.
+Dashboard: Display live item tracking and provide a basic analysis report. 
+
+Docker: version control and system demonstrations.
 
 Reporting & Analytics: Generating key reports on costs and profitability. 
 
-Django models are the source of truth; to apply migrations run "docker compose exec web python manage.py migrate".
+Django models are the source of truth; to apply migrations run "docker compose exec web python manage.py migrate". The manage.py shouldn`t be 
+moved to the Django folde (bms_project), under the risk of breaking migrations processess.
 
 👥 Team & Collaboration
 This project is a collaborative effort between students and is being overseen by our professor, Mohammad.

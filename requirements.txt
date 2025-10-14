@@ -1,8 +1,8 @@
-Django==5.0.4
-djangorestframework==3.15.1
-djangorestframework-simplejwt==5.3.1
-bcrypt==4.3.0
-gunicorn==22.0.0
-python-dotenv==1.0.1
-mysqlclient==2.2.4
-django-cors-headers==4.3.0
+Django==5.0.4                           # Web framework
+djangorestframework==3.15.1             # For building APIs
+djangorestframework-simplejwt==5.3.1    # For JWT authentication
+bcrypt==4.3.0                           # For password hashing
+gunicorn==22.0.0                        # WSGI server for production
+python-dotenv==1.0.1                    # For environment variable management
+mysqlclient==2.2.4                      # MySQL database adapter    
+django-cors-headers==4.3.0              # For handling CORS

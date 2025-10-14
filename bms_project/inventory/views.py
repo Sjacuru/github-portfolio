@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Ingredient, ProductionBatch
 from .serializers import IngredientSerializer, ProductionBatchSerializer, LowStockIngredientSerializer
 
+# Custom permission to allow only staff or managers to modify data
 class IsStaffOrManager(permissions.BasePermission):
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:

@@ -32,7 +32,7 @@ services:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
-      #- ./dbase/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      #- ./dbase/schema.sql:/docker-entrypoint-initdb.d/schema.sql # Uncomment to initialize the database with a schema
     networks:
       - bms_network
   frontend:

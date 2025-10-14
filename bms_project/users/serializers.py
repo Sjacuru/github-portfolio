@@ -1,7 +1,7 @@
-
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .models import Profile
-# Customizing JWT to include user role
+
+# JWT to include user role
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):

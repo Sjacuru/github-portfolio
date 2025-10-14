@@ -26,8 +26,8 @@ router = DefaultRouter()
 router.register(r'ingredients', IngredientViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/', include('bms_project.inventory.urls')),
+    path('admin/', admin.site.urls), 
+    path('api/token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'), 
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'), 
+    path('api/', include('bms_project.inventory.urls')), 
 ]
