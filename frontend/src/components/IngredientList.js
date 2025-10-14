@@ -12,16 +12,14 @@ const IngredientList = () => {
 const fetchIngredients = async () => {
   try {
     const token = localStorage.getItem('access_token');
-    console.log('Token:', token); // Debug token value
     if (!token) throw new Error('Please log in to view ingredients.');
     const response = await axios.get('http://localhost:8000/api/ingredients/', {
       headers: { Authorization: `Bearer ${token}` },
     });
-    console.log('Response:', response.data); // Debug response
     setIngredients(response.data);
     setLoading(false);
   } catch (err) {
-    console.error('Error:', err.response ? err.response.data : err.message); // Debug error
+    // console.error('Error:', err.response ? err.response.data : err.message); // Debug error
     setError(err.message || 'Failed to load ingredients. Ensure you are logged in as Staff.');
     setLoading(false);
   }
