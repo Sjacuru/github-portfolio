@@ -37,11 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',  # Django REST framework
-    'rest_framework_simplejwt',  # For SimpleJWT
-    "corsheaders",  # For handling CORS
-    'bms_project.inventory', # Inventory management
-    'bms_project.users',  # User management 
+    'rest_framework',               # Django REST framework
+    'rest_framework_simplejwt',     # For SimpleJWT
+    "corsheaders",                  # For handling CORS
+    'bms_project.inventory',        # Inventory management
+    'bms_project.users',            # User management 
 ]
 
 SIMPLE_JWT = {
@@ -99,7 +99,7 @@ USE_DOCKER = os.getenv('USE_DOCKER', 'false').strip().lower() == 'true'
 
 # sensible host defaults
 if USE_DOCKER:
-    # when Django runs inside docker-compose the DB service is usually reachable at 'db'
+    # when Django runs inside docker-compose the DB service is reachable at 'db'
     default_db_host = os.getenv('DB_HOST', 'db')
 else:
     # for local host development prefer 127.0.0.1
