@@ -1,0 +1,98 @@
+
+
+==========================================
+
+##   Project For: Bakery Mana System 	##
+
+==========================================
+ 
+Functional Requirements
+
+------------------------------------------------------------------------------------------------
+
+These describe what the system should do — the features and operations.
+ 
+1. User Management
+
+Create, update, delete users.
+
+Root has full access across all modules.
+ 
+2. Product & Recipe Management
+
+Add/update/delete products.
+ 
+Categorize products by type: Breads, Cakes, Cookies, Pies, Pastries, Pizzas, etc.
+ 
+Manage ingredients and their quantities.
+ 
+Define and update recipes (productRecipe).
+ 
+3. Inventory Management
+
+Track ingredient stock levels.
+ 
+Alert for low stock or expired items.
+ 
+Log inventory movements (in/out).
+ 
+4. Authentication & Authorization
+
+Secure login/logout.
+ 
+JWT-based session handling.
+ 
+Role-based API access.
+ 
+5. Audit & Logging
+
+Log user actions (e.g., recipe updates, inventory changes).
+ 
+Track production history and inventory adjustments.
+ 
+Non-Functional Requirements
+
+-----------------------------------------------------------------------------------------------------
+
+These define how the system should perform.
+ 
+1. Performance
+ 
+Efficient DB indexing for inventory and product lookups.
+ 
+2. Scalability
+ 
+Docker containers for horizontal scaling.
+ 
+3. Security
+
+Password hashing (e.g., bcrypt).
+ 
+Role-based access control.
+ 
+Secure API endpoints with HTTPS and JWT.
+ 
+4. Maintainability
+
+Clear comments for Python code.
+  
+5. Testability
+
+Unit tests for all services using unittest.
+  
+6. Availability
+ 
+Dockerized services for quick recovery and deployment.
+ 
+7. Usability
+
+Clean React UI for managing users, products, and inventory.
+ 
+Responsive design for desktop and tablet use.
+ 
+8. Extensibility
+
+Easy to add modules like Sales, Orders, or Delivery in future.
+ 
+Configurable product types and inventory categories.
+ 
