@@ -2,8 +2,6 @@
 
 ### A beautiful minimal and accessible portfolio template for Developers ✨.
 
-To View the live site click [here &rarr;](https://portfolio-template.surge.sh)
-
 ![Portfolio Gif](/images/portfolio.gif)
 
 ## Want to learn How to create a template like this ?
